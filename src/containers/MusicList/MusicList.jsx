@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import PDF from 'react-pdf-js';
 import AudioPlayer from 'react-h5-audio-player';
 
-import Aux from '../../hoc/Aux';
 import Modal from '../../components/Modal';
 
 import pdf01 from '../../doc/G_Minor_Bach.pdf';
@@ -141,47 +140,45 @@ class MusicList extends React.Component<Props, State> {
       );
 
     return (
-      <Aux>
+      <div>
+        Music list
+        <Link to="/user">User page</Link>
         <div>
-          Music list
-          <Link to="/user">User page</Link>
           <div>
-            <div>
-              {displaySheets}
-              <div
-                className={`modal-content ${
-                  this.state.openModal ? 'display-block' : 'display-none'
-                }`}
+            {displaySheets}
+            <div
+              className={`modal-content ${
+                this.state.openModal ? 'display-block' : 'display-none'
+              }`}
+            >
+              <Modal
+                itemId={this.state.activeItemId}
+                itemName={this.state.activeItemName}
+                itemSheet={this.state.activeItemSheet}
               >
-                <Modal
-                  itemId={this.state.activeItemId}
-                  itemName={this.state.activeItemName}
-                  itemSheet={this.state.activeItemSheet}
-                >
-                  <object
-                    width="600"
-                    height="400"
-                    data={this.state.activeItemSheet}
-                    type="application/pdf"
-                  />
+                <object
+                  width="600"
+                  height="400"
+                  data={this.state.activeItemSheet}
+                  type="application/pdf"
+                />
 
-                  {/* <PDF
+                {/* <PDF
                file={this.state.activeItemSheet}
                onDocumentComplete={this.onDocumentComplete}
                page={this.state.page}
              /> */}
-                  {/* {pagination} */}
-                  <AudioPlayer
-                    autoPlay={false}
-                    src={this.state.activeItemSound}
-                    onPlay={e => console.log('onPlay')}
-                  />
-                </Modal>
-              </div>
+                {/* {pagination} */}
+                <AudioPlayer
+                  autoPlay={false}
+                  src={this.state.activeItemSound}
+                  onPlay={e => console.log('onPlay')}
+                />
+              </Modal>
             </div>
           </div>
         </div>
-      </Aux>
+      </div>
     );
   }
 }
