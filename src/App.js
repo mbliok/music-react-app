@@ -19,7 +19,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="ui container">
         <Layout>
           <Switch>
             <Route exact path="/" component={HomePage} />
