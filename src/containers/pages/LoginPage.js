@@ -14,7 +14,7 @@ class LoginPage extends React.Component<Props, State> {
     return (
       <div>
         <h1>Login page</h1>
-        {/* NOTE: - dispatch func action to make sinck request,
+        {/* NOTE: - dispatch func action to make synchronous  request,
              - get data back,
              - update our reducer in redux store
              - and redirect

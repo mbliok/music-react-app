@@ -66,7 +66,7 @@ class LoginForm extends React.Component<Props, State> {
               id="email"
               name="email"
               placeholder="Email@email.com"
-              value={data.email || ''}
+              value={data.email || ''} // or set in state to be null
               onChange={this.onChange}
             />
             {errors.email && <Errors text={errors.email} />}
