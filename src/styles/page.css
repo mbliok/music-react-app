@@ -7,6 +7,9 @@ html,
 body {
   height: 100%; }
 
+label {
+  text-align: left !important; }
+
 .btn, .btn.btn-green {
   font-size: 1rem;
   font-family: 'ProximaNova-r';

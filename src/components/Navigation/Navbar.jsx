@@ -41,22 +41,20 @@ class Navbar extends React.Component<Props, State> {
 
   render() {
     return (
-      <Aux>
-        <nav className="navigation">
-          <ul>
-            {this.state.menuItems.map(menuItem => (
-              <li key={menuItem.id} className="route-link">
-                <NavLink to={menuItem.url} activeClassName="selected">
-                  <div className="link-icon-container">
-                    {/* <img src={menuItem.img} alt={menuItem.name} />{' '} */}
-                  </div>
-                  <div>{menuItem.name}</div>
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </Aux>
+      <nav className="navigation">
+        <ul>
+          {this.state.menuItems.map(menuItem => (
+            <li key={menuItem.id} className="route-link">
+              <NavLink to={menuItem.url} activeClassName="selected">
+                <div className="link-icon-container">
+                  {/* <img src={menuItem.img} alt={menuItem.name} />{' '} */}
+                </div>
+                <div>{menuItem.name}</div>
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </nav>
     );
   }
 }
