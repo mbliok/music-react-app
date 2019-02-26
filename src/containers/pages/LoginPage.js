@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LoginForm from '../../components/forms/LoginForm';
 import { login } from '../../actions/auth'; // create out dispatch action login file
-
+import axios from 'axios';
 type Props = {
   history: history,
   login: () => void
@@ -26,6 +26,7 @@ class LoginPage extends React.Component<Props, State> {
 
   submit = data =>
     this.props.login(data).then(() => this.props.history.push('/'));
+
   render() {
     return (
       <div>
