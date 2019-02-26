@@ -3,7 +3,7 @@ import React from 'react';
 const navContainer = props => (
   <div>
     <div className="nav-bar">
-      muZa
+      Logo
       {props.children}
     </div>
   </div>

@@ -17,7 +17,7 @@ class User extends React.Component<Props, State> {
     return (
       <div>
         User component
-        <Link to="/">Go Back to sheets list</Link>
+        <Link to="/playlist">Go Back to playlist</Link>
         {/* <button onClick={this.onViewClientProfile}> go to music list</button> */}
       </div>
     );

@@ -1,10 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const HomePage = () => (
-  <div>
-    <h1>Home page</h1>
-    <Link to="/login">Login</Link>
-  </div>
-);
+import Facebook from '../../components/forms/Facebook';
+
+type Props = {
+  history: history
+};
+type history = {
+  push: () => void
+};
+class HomePage extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {};
+  }
+  fbLoggedIn = response => this.props.history.push('/playlist');
+  render() {
+    return (
+      <div>
+        <h1>Home page</h1>
+        To get started, authenticate with Facebook.
+        <Facebook isAuthenticatedWithFb={this.fbLoggedIn} />
+      </div>
+    );
+  }
+}
 export default HomePage;

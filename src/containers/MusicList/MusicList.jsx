@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PDF from 'react-pdf-js';
 import AudioPlayer from 'react-h5-audio-player';
-
+import { Form, Button } from 'semantic-ui-react';
 import Modal from '../../components/Modal';
 
 import pdf01 from '../../doc/G_Minor_Bach.pdf';
@@ -18,7 +18,8 @@ class MusicList extends React.Component<Props, State> {
       activeItemName: '', //state property to hold item name
       activeItemId: null, //state property to hold item id
       activeItemSheet: [],
-      playlist: [],
+      items: [],
+      loading: false,
       pdfData: [
         {
           id: 1,
@@ -101,14 +102,25 @@ class MusicList extends React.Component<Props, State> {
       activeItemSound: pdfItem.soundUrl
     });
   }
+  componentDidMount() {
+    fetch('http://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          loading: false,
+          items: json
+        });
+      });
+  }
   // save in localstorage
   componentWillUpdate(nextProps, nextState) {
-    localStorage.setItem('playlist', JSON.stringify(nextState.playlist));
+    localStorage.setItem('items', JSON.stringify(nextState.items));
     localStorage.setItem('last visited', Date.now());
   }
   render() {
-    const { playlist, pdfData } = this.state;
+    const { items, pdfData, loading } = this.state;
     let pagination = null;
+
     if (this.state.pages) {
       pagination = this.renderPagination(this.state.page, this.state.pages);
     }
@@ -143,6 +155,15 @@ class MusicList extends React.Component<Props, State> {
       <div>
         Music list
         <Link to="/user">User page</Link>
+        <div className={`content ${loading}? 'is-loading': ''`}>
+          <ul>
+            {!loading && items.length > 0
+              ? items.map(item => {
+                  return <li key={item.id}>{item.name}</li>;
+                })
+              : null}
+          </ul>
+        </div>
         <div>
           <div>
             {displaySheets}
