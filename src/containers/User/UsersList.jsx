@@ -24,6 +24,7 @@ class UsersList extends React.Component<Props, State> {
         console.log(error);
       });
   }
+
   render() {
     return (
       <div>

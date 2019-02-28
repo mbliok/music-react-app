@@ -8,24 +8,42 @@ class AddNewUser extends React.Component<Props, State> {
     super(props);
     this.state = {
       data: [], // ? {}
-      first_name: ''
-      // last_name: ''
+      users: [],
+      newUser: {
+        first_name: '',
+        last_name: ''
+      }
     };
   }
 
-  // ADD new user
+  // ADD new user v1
   handleSubmitUser = e => {
     e.preventDefault();
     const data = {
       first_name: this.state.first_name
     };
     axios.post(`http://localhost:3004/users`, data).then(res => {
-      console.log(res);
       console.log(res.data);
     });
 
     this.setState({ data });
     console.log(data + 'My data');
+  };
+  // Add new user v2
+  addUser = e => {
+    e.preventDefault();
+    axios.post(`http://localhost:3004/users`, this.state.newUser).then(res => {
+      console.log(res.data);
+      let { users } = this.state;
+      users.push(res.data);
+      this.setState({
+        users,
+        newUser: {
+          first_name: '',
+          last_name: ''
+        }
+      }); // reset the state with curent new user and clean inputs // to do redirect
+    });
   };
   onChange = e => {
     // this.setState({ first_name: e.target.value });
@@ -39,7 +57,7 @@ class AddNewUser extends React.Component<Props, State> {
     return (
       <div>
         Add new users
-        <form onSubmit={this.handleSubmitUser}>
+        {/* <form onSubmit={this.handleSubmitUser}>
           <label>
             User first name: {data.first_name}
             <input
@@ -51,6 +69,35 @@ class AddNewUser extends React.Component<Props, State> {
           </label>
 
           <button type="submit">Add</button>
+        </form> */}
+        <form>
+          <label>
+            First name:
+            <input
+              type="text"
+              name="first_name"
+              onChange={e => {
+                let { newUser } = this.state;
+                newUser.first_name = e.target.value;
+                this.setState({ newUser });
+              }}
+              value={this.state.newUser.first_name}
+            />
+          </label>
+          <label>
+            Last name:
+            <input
+              type="text"
+              name="last_name"
+              onChange={e => {
+                let { newUser } = this.state;
+                newUser.last_name = e.target.value;
+                this.setState({ newUser });
+              }}
+              value={this.state.newUser.last_name}
+            />
+          </label>
+          <button onClick={this.addUser}>Add new user</button>
         </form>
       </div>
     );

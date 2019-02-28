@@ -4,8 +4,8 @@ import React from 'react';
 
 type Props = {
   children: any,
-  itemId: number,
-  itemName: string,
+  itemid: number,
+  itemname: string,
   itemsheet: any,
   itemsound: any
 };
@@ -20,12 +20,12 @@ class Modal extends React.Component<Props, State> {
     return (
       <div
         className="modal-body"
-        itemId={this.props.itemId}
-        itemName={this.props.itemName}
+        itemid={this.props.itemid}
+        itemname={this.props.itemname}
         itemsheet={this.props.itemsheet}
         itemsound={this.props.itemsound}
       >
-        {this.props.itemName}
+        {this.props.itemname}
         {/* {this.props.itemsheet}
         {this.props.itemsound} */}
         {this.props.children}
