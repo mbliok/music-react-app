@@ -31,22 +31,40 @@
       "id": 7
     },
     {
-      "user": {
-        "name": "Bambi"
+      "data": {
+        "first_name": ""
       },
       "id": 8
     },
     {
-      "user": {
-        "name": ""
+      "data": {
+        "first_name": ""
       },
       "id": 9
     },
     {
-      "user": {
-        "first_name": "Petar"
+      "data": {
+        "first_name": ""
       },
       "id": 10
+    },
+    {
+      "data": {
+        "first_name": ""
+      },
+      "id": 11
+    },
+    {
+      "data": {
+        "first_name": ""
+      },
+      "id": 12
+    },
+    {
+      "data": {
+        "first_name": ""
+      },
+      "id": 13
     }
   ],
   "posts": [

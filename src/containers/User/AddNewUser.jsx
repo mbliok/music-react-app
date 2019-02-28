@@ -7,6 +7,7 @@ class AddNewUser extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
+      data: [], // ? {}
       first_name: ''
       // last_name: ''
     };
@@ -15,29 +16,37 @@ class AddNewUser extends React.Component<Props, State> {
   // ADD new user
   handleSubmitUser = e => {
     e.preventDefault();
-    const user = {
+    const data = {
       first_name: this.state.first_name
     };
-    axios.post(`http://localhost:3004/users`, { user }).then(res => {
+    axios.post(`http://localhost:3004/users`, { data }).then(res => {
       console.log(res);
       console.log(res.data);
     });
+
+    this.setState({ data });
+    console.log(data + 'My data');
   };
-  onChangeName = e => {
-    this.setState({ first_name: e.target.value });
+  onChange = e => {
+    // this.setState({ first_name: e.target.value });
+    this.setState({
+      data: { ...this.state.data, [e.target.name]: e.target.value }
+    });
   };
   render() {
+    const { data } = this.state;
+
     return (
       <div>
         Add new users
         <form onSubmit={this.handleSubmitUser}>
           <label>
-            User first name:
+            User first name: {data.first_name}
             <input
               type="text"
               name="first_name"
-              onChange={this.onChangeName}
-              value={this.state.first_name}
+              onChange={this.onChange}
+              value={data.first_name || ''}
             />
           </label>
 

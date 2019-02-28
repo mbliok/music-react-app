@@ -33,6 +33,7 @@ class UsersList extends React.Component<Props, State> {
             console.log(user);
             return (
               <li key={user.id}>
+                {user.id}
                 {user.first_name} {user.last_name}
               </li>
             );
