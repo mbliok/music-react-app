@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
+import Facebook from '../../components/forms/Facebook';
+import LoginFormRedux from '../../components/forms/LoginFormRedux';
 
-import LoginForm from '../../components/forms/LoginForm';
-import { login } from '../../actions/auth'; // create out dispatch action login file
+import { login } from '../../actions/auth'; // create  dispatch action login file
 
 type Props = {
   history: history,
@@ -27,8 +28,9 @@ class LoginPage extends React.Component<Props, State> {
   // - login() will be avelable when connect this component to redux
 
   submit = data =>
-    // this.props.login(data).then(() => this.props.history.push('/'));
-    this.props.history.push('/playlist');
+    this.props.login(data).then(() => this.props.history.push('/'));
+
+  // fbLoggedIn = response => this.props.history.push('/playlist');
 
   render() {
     return (
@@ -38,8 +40,10 @@ class LoginPage extends React.Component<Props, State> {
              - get data back,
              - update our reducer in redux store
              - and redirect
-             - the purpouse of the form is just to colect data and validate */}
-        <LoginForm submit={this.submit} />
+              */}
+
+        <LoginFormRedux submit={this.submit} />
+        {/* <Facebook isAuthenticatedWithFb={this.fbLoggedIn} /> */}
       </div>
     );
   }

@@ -9,7 +9,7 @@ type State = {};
 type Props = {
   submit: () => void // pass func to parent component (LoginPage)
 };
-class LoginForm extends React.Component<Props, State> {
+class LoginFormRedux extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -56,7 +56,7 @@ class LoginForm extends React.Component<Props, State> {
     const { data, errors } = this.state;
     return (
       <div>
-        <h2>Login Form</h2>
+        <h2>Login Form with redux</h2>
         <Form onSubmit={this.onSubmit}>
           {/* a semantic UI attr,!! conver to boolean : error={!!errors.email}  */}
           <Form.Field error={!!errors.email}>
@@ -89,4 +89,4 @@ class LoginForm extends React.Component<Props, State> {
     );
   }
 }
-export default LoginForm;
+export default LoginFormRedux;

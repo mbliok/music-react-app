@@ -18,8 +18,6 @@ class HomePage extends React.Component<Props, State> {
     return (
       <div>
         <h1>Home page</h1>
-        To get started, authenticate with Facebook.
-        <Facebook isAuthenticatedWithFb={this.fbLoggedIn} />
       </div>
     );
   }

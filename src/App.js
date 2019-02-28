@@ -1,14 +1,12 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-// import axios from 'axios';
-//
+import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
+
 import Layout from './components/Layout/Layout';
 import HomePage from './containers/pages/HomePage';
 import LoginPage from './containers/pages/LoginPage';
 import MusicList from './containers/MusicList/MusicList';
-import User from './containers/User/User';
+import userContainer from './containers/User/UserContainere';
 
-// import logo from './logo.svg';
 import './App.css';
 
 class App extends React.Component {
@@ -20,14 +18,16 @@ class App extends React.Component {
   render() {
     return (
       <div className="ui container">
-        <Layout>
+        <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/playlist" component={MusicList} />
-            <Route path="/user" component={User} />
+            <Route exact path="/login" component={LoginPage} />
+            <Layout>
+              <Route path="/" component={HomePage} />
+              <Route path="/playlist" component={MusicList} />
+              <Route path="/users" component={userContainer} />
+            </Layout>
           </Switch>
-        </Layout>
+        </BrowserRouter>
       </div>
     );
   }

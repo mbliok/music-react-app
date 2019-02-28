@@ -9,7 +9,7 @@ import api from '../api';
 export const login = credentials => dispatch =>
   // v2
   // make an api request
-  // Get data and dispatch redux action that chenge the store
+  // Get data and dispatch redux action that change the store
   api.user.login(credentials).then(user => dispatch(userLoggedIn(user)));
 
 // need to export this userLoggedIn

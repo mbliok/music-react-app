@@ -25,8 +25,8 @@ class Navbar extends React.Component<Props, State> {
         },
         {
           id: 2,
-          name: 'User page',
-          url: `/user`
+          name: 'Users',
+          url: `/users`
           // img: onlineImg,
         },
         {

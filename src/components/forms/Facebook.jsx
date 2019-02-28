@@ -41,11 +41,12 @@ class Facebook extends React.Component<Props, State> {
     } else {
       fbContent = (
         <FacebookLogin
-          appId="548317945657155" // my fb dev credits
+          appId="548317945657155" // fb dev credits
           autoLoad={true}
           fields="name,email,picture"
           onClick={this.componentClicked}
           callback={this.responseFacebook}
+          cssClass="fb-btn-class"
         />
       );
     }
