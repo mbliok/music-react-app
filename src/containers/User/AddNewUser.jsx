@@ -19,7 +19,7 @@ class AddNewUser extends React.Component<Props, State> {
     const data = {
       first_name: this.state.first_name
     };
-    axios.post(`http://localhost:3004/users`, { data }).then(res => {
+    axios.post(`http://localhost:3004/users`, data).then(res => {
       console.log(res);
       console.log(res.data);
     });

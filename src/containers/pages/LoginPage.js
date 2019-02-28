@@ -1,19 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import Facebook from '../../components/forms/Facebook';
+// import Facebook from '../../components/forms/Facebook';
 import LoginFormRedux from '../../components/forms/LoginFormRedux';
 
 import { login } from '../../actions/auth'; // create  dispatch action login file
-
+type history = {
+  push: () => void
+};
 type Props = {
   history: history,
   login: () => void
 };
-type history = {
-  push: () => void
-};
+
 class LoginPage extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);

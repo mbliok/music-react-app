@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { server } from './server/server-simulator/server';
+// import { server } from './server/server-simulator/server';
 
 export default {
   user: {

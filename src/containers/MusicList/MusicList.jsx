@@ -1,11 +1,8 @@
 import React from 'react';
 
-import axios from 'axios';
 import PDF from 'react-pdf-js';
 import AudioPlayer from 'react-h5-audio-player';
-import { Form, Button } from 'semantic-ui-react';
-import Validator from 'validator';
-import Errors from '../../components/forms/Errors';
+
 import Modal from '../../components/Modal';
 
 import pdf01 from '../../doc/G_Minor_Bach.pdf';
@@ -113,25 +110,9 @@ class MusicList extends React.Component<Props, State> {
   componentWillUpdate(nextProps, nextState) {
     localStorage.setItem('items', JSON.stringify(nextState.items));
   }
-  // onChange = e =>
-  //   this.setState({
-  //     data: { ...this.state.data, [e.target.name]: e.target.value }
-  //   });
-  // onSubmit = () => {
 
-  //   const errors = this.validate(this.state.data);
-  //   this.setState({ errors });
-  // };
-
-  // validate = data => {
-  //   const errors = {};
-
-  //   if (!data.username) errors.username = 'Username Can not be blank';
-  //   if (!data.password) errors.password = 'Can not be blank';
-  //   return errors;
-  // };
   render() {
-    const { errors, data, items, pdfData, loading } = this.state;
+    const { pdfData, loading } = this.state;
     let pagination = null;
 
     if (this.state.pages) {
@@ -167,33 +148,6 @@ class MusicList extends React.Component<Props, State> {
     return (
       <div>
         Music list
-        {/* <Form onSubmit={this.onSubmit}>
-          <Form.Field error={!!errors.username}>
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              placeholder="username"
-              value={data.username || ''}
-              onChange={this.onChange}
-            />
-            {errors.username && <Errors text={errors.username} />}
-          </Form.Field>
-          <Form.Field error={!!errors.password}>
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="******"
-              value={data.password || ''} 
-              onChange={this.onChange}
-            />
-            {errors.password && <Errors text={errors.password} />}
-          </Form.Field>
-          <Button primary>Login</Button>
-        </Form> */}
         <div className={`content ${loading}? 'is-loading': ''`} />
         <div>
           <div>

@@ -31,40 +31,12 @@
       "id": 7
     },
     {
-      "data": {
-        "first_name": ""
-      },
+      "keyname": "valinput",
       "id": 8
     },
     {
-      "data": {
-        "first_name": ""
-      },
+      "first_name": "This is a val input",
       "id": 9
-    },
-    {
-      "data": {
-        "first_name": ""
-      },
-      "id": 10
-    },
-    {
-      "data": {
-        "first_name": ""
-      },
-      "id": 11
-    },
-    {
-      "data": {
-        "first_name": ""
-      },
-      "id": 12
-    },
-    {
-      "data": {
-        "first_name": ""
-      },
-      "id": 13
     }
   ],
   "posts": [

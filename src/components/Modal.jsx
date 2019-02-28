@@ -6,8 +6,8 @@ type Props = {
   children: any,
   itemId: number,
   itemName: string,
-  itemSheet: any,
-  itemSound: any
+  itemsheet: any,
+  itemsound: any
 };
 type State = {};
 class Modal extends React.Component<Props, State> {
@@ -22,12 +22,12 @@ class Modal extends React.Component<Props, State> {
         className="modal-body"
         itemId={this.props.itemId}
         itemName={this.props.itemName}
-        itemSheet={this.props.itemSheet}
-        itemSound={this.props.itemSound}
+        itemsheet={this.props.itemsheet}
+        itemsound={this.props.itemsound}
       >
         {this.props.itemName}
-        {/* {this.props.itemSheet}
-        {this.props.itemSound} */}
+        {/* {this.props.itemsheet}
+        {this.props.itemsound} */}
         {this.props.children}
       </div>
     );
