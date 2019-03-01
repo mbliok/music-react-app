@@ -42,7 +42,7 @@ class UsersList extends React.Component<Props, State> {
       .then(res => {
         this.refreshUser();
         this.setState({
-          // clean inputs field
+          // cleaning inputs field
           editUserData: {
             first_name: '',
             last_name: ''
@@ -51,12 +51,12 @@ class UsersList extends React.Component<Props, State> {
       });
   };
 
-  editUser(id, first_name, last_name) {
+  editUser = (id, first_name, last_name) => {
     console.log(first_name);
     this.setState({
       editUserData: { id, first_name, last_name }
     });
-  }
+  };
   refreshUser = () => {
     axios
       .get('http://localhost:3004/users')
@@ -66,6 +66,11 @@ class UsersList extends React.Component<Props, State> {
       .catch(error => {
         console.log(error);
       });
+  };
+  deleteUser = id => {
+    axios.delete('http://localhost:3004/users/' + id).then(res => {
+      this.refreshUser();
+    });
   };
   render() {
     return (
@@ -87,6 +92,7 @@ class UsersList extends React.Component<Props, State> {
                 >
                   Edit
                 </button>
+                <button onClick={this.deleteUser.bind(this, user.id)}>X</button>
               </li>
             );
           })}
