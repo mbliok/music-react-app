@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { createStore, applyMiddleware } from 'redux'; // create the store with react, the most important func
 import { Provider } from 'react-redux'; // use to conect redux and react
 import thunk from 'redux-thunk';

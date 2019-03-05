@@ -23,9 +23,9 @@ class AddNewUser extends React.Component<Props, State> {
     e.preventDefault();
     axios.post(`http://localhost:3004/users`, this.state.newUser).then(res => {
       console.log(res.data);
-      const token = res.data.token;
+
       let { users } = this.state;
-      localStorage.setItem('jwtToken', token);
+
       users.push(res.data);
       this.setState({
         users,

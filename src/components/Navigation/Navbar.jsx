@@ -15,23 +15,23 @@ class Navbar extends React.Component<Props, State> {
     super(props);
     this.state = {
       menuItems: [
-        {
-          id: 1,
-          name: 'Play list',
-          url: `/playlist`
-        },
-        {
-          id: 2,
-          name: 'Users',
-          url: `/users`
-        },
-        {
-          id: 3,
-          name: 'Home page',
-          url: `/`
-        },
+        // {
+        //   id: 1,
+        //   name: 'Play list',
+        //   url: `/playlist`
+        // },
+        // {
+        //   id: 2,
+        //   name: 'Users',
+        //   url: `/users`
+        // },
         {
           id: 3,
+          name: 'wellcome',
+          url: `/hi`
+        },
+        {
+          id: 4,
           name: 'Sign up',
           url: `/signup`
         }
@@ -42,19 +42,16 @@ class Navbar extends React.Component<Props, State> {
   render() {
     return (
       <nav className="navigation">
-        {/* <ul>
+        <ul>
           {this.state.menuItems.map(menuItem => (
             <li key={menuItem.id} className="route-link">
               <NavLink to={menuItem.url} activeClassName="selected">
-                <div className="link-icon-container">
-                </div>
+                <div className="link-icon-container" />
                 <div>{menuItem.name}</div>
               </NavLink>
             </li>
           ))}
-        </ul> */}
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/signup">Sign up</NavLink>
+        </ul>
       </nav>
     );
   }

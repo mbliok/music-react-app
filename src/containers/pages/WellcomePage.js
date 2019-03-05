@@ -2,7 +2,7 @@ import React from 'react';
 
 type Props = {};
 
-class HomePage extends React.Component<Props, State> {
+class WellcomePage extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {};
@@ -11,9 +11,9 @@ class HomePage extends React.Component<Props, State> {
   render() {
     return (
       <div>
-        <h1>Home page 1</h1>
+        <h1>Wellcome Page </h1>
       </div>
     );
   }
 }
-export default HomePage;
+export default WellcomePage;
