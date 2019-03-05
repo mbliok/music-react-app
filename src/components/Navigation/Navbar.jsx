@@ -4,8 +4,7 @@ import { NavLink } from 'react-router-dom';
 type MenuItem = {
   id: number,
   name: string,
-  url: string,
-  img?: any
+  url: string
 };
 type State = {
   menuItems: MenuItem[]
@@ -20,19 +19,21 @@ class Navbar extends React.Component<Props, State> {
           id: 1,
           name: 'Play list',
           url: `/playlist`
-          //  img: userImg,
         },
         {
           id: 2,
           name: 'Users',
           url: `/users`
-          // img: onlineImg,
         },
         {
           id: 3,
           name: 'Home page',
           url: `/`
-          // img: onlineImg,
+        },
+        {
+          id: 3,
+          name: 'Sign up',
+          url: `/signup`
         }
       ]
     };
@@ -41,18 +42,19 @@ class Navbar extends React.Component<Props, State> {
   render() {
     return (
       <nav className="navigation">
-        <ul>
+        {/* <ul>
           {this.state.menuItems.map(menuItem => (
             <li key={menuItem.id} className="route-link">
               <NavLink to={menuItem.url} activeClassName="selected">
                 <div className="link-icon-container">
-                  {/* <img src={menuItem.img} alt={menuItem.name} />{' '} */}
                 </div>
                 <div>{menuItem.name}</div>
               </NavLink>
             </li>
           ))}
-        </ul>
+        </ul> */}
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/signup">Sign up</NavLink>
       </nav>
     );
   }

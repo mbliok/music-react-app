@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import Layout from './components/Layout/Layout';
+import Navbar from '../src/components/Navigation/Navbar';
 import HomePage from './containers/pages/HomePage';
 import LoginPage from './containers/pages/LoginPage';
 import MusicList from './containers/MusicList/MusicList';
@@ -18,6 +19,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="ui container">
+        <Navbar />
         <BrowserRouter>
           <Switch>
             <Route exact path="/login" component={LoginPage} />

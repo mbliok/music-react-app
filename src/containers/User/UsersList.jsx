@@ -1,6 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import { Button } from 'semantic-ui-react';
+import {
+  Container,
+  Button,
+  Form,
+  List,
+  Divider,
+  Modal
+} from 'semantic-ui-react';
 
 type State = {};
 type Props = {};
@@ -8,6 +15,7 @@ class UsersList extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
+      open: false,
       users: [],
       editUserData: {
         id: '',
@@ -72,61 +80,75 @@ class UsersList extends React.Component<Props, State> {
       this.refreshUser();
     });
   };
+  close = () => this.setState({ open: false });
+
   render() {
     return (
-      <div>
-        All users
-        <ul>
+      <Container fluid>
+        <b>Get all users</b>
+        <Divider />
+
+        <List>
           {this.state.users.map(user => {
             return (
-              <li key={user.id}>
+              <List.Item key={user.id}>
                 {user.id}
                 {user.first_name} {user.last_name}
-                <button
-                  onClick={this.editUser.bind(
-                    this,
-                    user.id,
-                    user.first_name,
-                    user.last_name
-                  )}
-                >
-                  Edit
-                </button>
-                <button onClick={this.deleteUser.bind(this, user.id)}>X</button>
-              </li>
+                <Button.Group size="mini">
+                  <Button
+                    onClick={this.editUser.bind(
+                      this,
+                      user.id,
+                      user.first_name,
+                      user.last_name
+                    )}
+                  >
+                    Edit
+                  </Button>
+                  <Button.Or />
+                  <Button onClick={this.deleteUser.bind(this, user.id)}>
+                    Delete
+                  </Button>
+                </Button.Group>
+              </List.Item>
             );
           })}
-        </ul>
-        <form>
-          <label>
-            Edit First name:
-            <input
-              type="text"
-              name="first_name"
-              onChange={e => {
-                let { editUserData } = this.state;
-                editUserData.first_name = e.target.value;
-                this.setState({ editUserData });
-              }}
-              value={this.state.editUserData.first_name || ''}
-            />
-          </label>
-          <label>
-            Edit Last name:
-            <input
-              type="text"
-              name="last_name"
-              onChange={e => {
-                let { editUserData } = this.state;
-                editUserData.last_name = e.target.value;
-                this.setState({ editUserData });
-              }}
-              value={this.state.editUserData.last_name || ''}
-            />
-          </label>
-          <button onClick={this.updateUser}>Save and update</button>
-        </form>
-      </div>
+        </List>
+        <b>Edit users</b>
+        <Divider />
+        <Form>
+          <Form.Input
+            label=""
+            placeholder="Edit first name"
+            type="text"
+            name="first_name"
+            onChange={e => {
+              let { editUserData } = this.state;
+              editUserData.first_name = e.target.value;
+              this.setState({ editUserData });
+            }}
+            value={this.state.editUserData.first_name || ''}
+          />
+          <Form.Input
+            label=""
+            placeholder="Edit last name"
+            type="text"
+            name="last_name"
+            onChange={e => {
+              let { editUserData } = this.state;
+              editUserData.last_name = e.target.value;
+              this.setState({ editUserData });
+            }}
+            value={this.state.editUserData.last_name || ''}
+          />
+          <Button
+            content="Save and update"
+            primary
+            size="mini"
+            onClick={this.updateUser}
+          />
+        </Form>
+      </Container>
     );
   }
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import { Container, Button, Form, List, Divider } from 'semantic-ui-react';
+import jwt from 'jsonwebtoken';
 
 type State = {};
 type Props = {};
@@ -7,7 +9,7 @@ class AddNewUser extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      data: [], // ? {}
+      data: [],
       users: [],
       newUser: {
         first_name: '',
@@ -16,25 +18,14 @@ class AddNewUser extends React.Component<Props, State> {
     };
   }
 
-  // ADD new user v1
-  handleSubmitUser = e => {
-    e.preventDefault();
-    const data = {
-      first_name: this.state.first_name
-    };
-    axios.post(`http://localhost:3004/users`, data).then(res => {
-      console.log(res.data);
-    });
-
-    this.setState({ data });
-    console.log(data + 'My data');
-  };
   // Add new user v2
   addUser = e => {
     e.preventDefault();
     axios.post(`http://localhost:3004/users`, this.state.newUser).then(res => {
       console.log(res.data);
+      const token = res.data.token;
       let { users } = this.state;
+      localStorage.setItem('jwtToken', token);
       users.push(res.data);
       this.setState({
         users,
@@ -46,7 +37,6 @@ class AddNewUser extends React.Component<Props, State> {
     });
   };
   onChange = e => {
-    // this.setState({ first_name: e.target.value });
     this.setState({
       data: { ...this.state.data, [e.target.name]: e.target.value }
     });
@@ -55,8 +45,9 @@ class AddNewUser extends React.Component<Props, State> {
     const { data } = this.state;
 
     return (
-      <div>
-        Add new users
+      <Container fluid>
+        <b>Add new users</b>
+        <Divider />
         {/* <form onSubmit={this.handleSubmitUser}>
           <label>
             User first name: {data.first_name}
@@ -70,36 +61,35 @@ class AddNewUser extends React.Component<Props, State> {
 
           <button type="submit">Add</button>
         </form> */}
-        <form>
-          <label>
-            First name:
-            <input
-              type="text"
-              name="first_name"
-              onChange={e => {
-                let { newUser } = this.state;
-                newUser.first_name = e.target.value;
-                this.setState({ newUser });
-              }}
-              value={this.state.newUser.first_name}
-            />
-          </label>
-          <label>
-            Last name:
-            <input
-              type="text"
-              name="last_name"
-              onChange={e => {
-                let { newUser } = this.state;
-                newUser.last_name = e.target.value;
-                this.setState({ newUser });
-              }}
-              value={this.state.newUser.last_name}
-            />
-          </label>
-          <button onClick={this.addUser}>Add new user</button>
-        </form>
-      </div>
+        <Form>
+          <Form.Input
+            label="User first name"
+            placeholder="last name"
+            type="text"
+            name="first_name"
+            onChange={e => {
+              let { newUser } = this.state;
+              newUser.first_name = e.target.value;
+              this.setState({ newUser });
+            }}
+            value={this.state.newUser.first_name}
+          />
+
+          <Form.Input
+            label="User last name"
+            placeholder="last name"
+            type="text"
+            name="last_name"
+            onChange={e => {
+              let { newUser } = this.state;
+              newUser.last_name = e.target.value;
+              this.setState({ newUser });
+            }}
+            value={this.state.newUser.last_name}
+          />
+          <Button content="Add" primary size="mini" onClick={this.addUser} />
+        </Form>
+      </Container>
     );
   }
 }
