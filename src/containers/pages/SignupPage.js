@@ -24,8 +24,9 @@ class SignupPage extends React.Component<Props, State> {
   }
 }
 export default connect(
-  state => {
-    return {};
-  },
+  // state => {
+  //   return {};
+  // },
+  null,
   { userSignupRequest }
 )(SignupPage);

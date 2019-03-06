@@ -50,7 +50,7 @@ class SignupForm extends React.Component<Props, State> {
       <div>
         <Form onSubmit={this.onSubmit}>
           <Form.Input
-            label="User first name"
+            label="First name"
             placeholder="last name"
             type="text"
             name="first_name"
@@ -59,7 +59,7 @@ class SignupForm extends React.Component<Props, State> {
           />
 
           <Form.Input
-            label="User last name"
+            label="Last name"
             placeholder="last name"
             type="text"
             name="last_name"
@@ -67,7 +67,7 @@ class SignupForm extends React.Component<Props, State> {
             value={this.state.last_name || ''}
           />
           <Form.Input
-            label=""
+            label="Email"
             placeholder="email"
             type="text"
             name="email"

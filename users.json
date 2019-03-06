@@ -101,6 +101,58 @@
       "last_name": "Yanna",
       "email": "yna@gmail.com",
       "id": 24
+    },
+    {
+      "first_name": "userSignupRequest",
+      "last_name": "userSignupRequest",
+      "email": "userSignupRequest",
+      "id": 25
+    },
+    {
+      "function(){return!window.__REDUX_DEVTOOLS_EXTENSION_LOCKED__": "",
+      "a.dispatch.apply(a,arguments)}": "",
+      "id": 26
+    },
+    {
+      "function(){return!window.__REDUX_DEVTOOLS_EXTENSION_LOCKED__": "",
+      "a.dispatch.apply(a,arguments)}": "",
+      "id": 27
+    },
+    {
+      "function(){return!window.__REDUX_DEVTOOLS_EXTENSION_LOCKED__": "",
+      "a.dispatch.apply(a,arguments)}": "",
+      "id": 28
+    },
+    {
+      "function(){return!window.__REDUX_DEVTOOLS_EXTENSION_LOCKED__": "",
+      "a.dispatch.apply(a,arguments)}": "",
+      "id": 29
+    },
+    {
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "id": 30
+    },
+    {
+      "function(){return!window.__REDUX_DEVTOOLS_EXTENSION_LOCKED__": "",
+      "a.dispatch.apply(a,arguments)}": "",
+      "id": 31
+    },
+    {
+      "function(){return!window.__REDUX_DEVTOOLS_EXTENSION_LOCKED__": "",
+      "a.dispatch.apply(a,arguments)}": "",
+      "id": 32
+    },
+    {
+      "identifier": "mbliok@melontech.com",
+      "password": "Changemen0w123",
+      "id": 33
+    },
+    {
+      "identifier": "testmail",
+      "password": "555",
+      "id": 34
     }
   ],
   "posts": [

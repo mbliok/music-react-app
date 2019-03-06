@@ -4,9 +4,9 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import SignupPage from './containers/pages/SignupPage';
 import WellcomePage from './containers/pages/WellcomePage';
-
+import LoginPage from './containers/pages/LoginPage';
 // import HomePage from './containers/pages/HomePage';
-// import LoginPage from './containers/pages/LoginPage';
+
 // import MusicList from './containers/MusicList/MusicList';
 // import userContainer from './containers/User/UserContainere';
 
@@ -26,6 +26,7 @@ class App extends React.Component {
             <Layout>
               <Route path="/hi" component={WellcomePage} />
               <Route path="/signup" component={SignupPage} />
+              <Route path="/login" component={LoginPage} />
               {/* <Route path="/" component={HomePage} />
               <Route path="/playlist" component={MusicList} />
               <Route path="/users" component={userContainer} />
