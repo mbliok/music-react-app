@@ -21,19 +21,29 @@ class Navbar extends React.Component<Props, State> {
         //   url: `/playlist`
         // },
         // {
-        //   id: 2,
-        //   name: 'Users',
-        //   url: `/users`
+        //   id: 1,
+        //   name: 'Home',
+        //   url: `/`
         // },
         {
+          id: 2,
+          name: 'Users',
+          url: `/users`
+        },
+        {
           id: 3,
-          name: 'wellcome',
-          url: `/hi`
+          name: 'Posts',
+          url: `/posts`
         },
         {
           id: 4,
           name: 'Sign up',
           url: `/signup`
+        },
+        {
+          id: 5,
+          name: 'Login',
+          url: `/login`
         }
       ]
     };

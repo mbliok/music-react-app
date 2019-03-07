@@ -12,34 +12,20 @@ type Props = {
   userSignupRequest: () => void
 };
 
-class SignupForm extends React.Component<Props, State> {
+class RegisterForm extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
       first_name: '',
       last_name: '',
-      email: ''
+      email: '',
+      password: ''
     };
   }
 
   onSubmit = e => {
     e.preventDefault();
     this.props.userSignupRequest(this.state);
-    // axios.post(`http://localhost:3004/users`, this.state.newUser).then(res => {
-    //   console.log(res.data);
-
-    //   let { users } = this.state;
-
-    //   users.push(res.data);
-    //   this.setState({
-    //     users,
-    //     newUser: {
-    //       first_name: '',
-    //       last_name: '',
-    //       email: ''
-    //     }
-    //   });
-    // });
   };
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -74,11 +60,18 @@ class SignupForm extends React.Component<Props, State> {
             onChange={this.onChange}
             value={this.state.email || ''}
           />
-
+          <Form.Input
+            label="password"
+            placeholder="password"
+            type="password"
+            name="password"
+            onChange={this.onChange}
+            value={this.state.password || ''}
+          />
           <Button primary>Sign up</Button>
         </Form>
       </div>
     );
   }
 }
-export default SignupForm;
+export default RegisterForm;

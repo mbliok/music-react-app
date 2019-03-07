@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { Container, Button, Form, List, Divider } from 'semantic-ui-react';
-import jwt from 'jsonwebtoken';
 
 type State = {};
 type Props = {};
@@ -48,19 +47,7 @@ class AddNewUser extends React.Component<Props, State> {
       <Container fluid>
         <b>Add new users</b>
         <Divider />
-        {/* <form onSubmit={this.handleSubmitUser}>
-          <label>
-            User first name: {data.first_name}
-            <input
-              type="text"
-              name="first_name"
-              onChange={this.onChange}
-              value={data.first_name || ''}
-            />
-          </label>
 
-          <button type="submit">Add</button>
-        </form> */}
         <Form>
           <Form.Input
             label="User first name"

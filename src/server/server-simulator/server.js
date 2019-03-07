@@ -1,18 +1,17 @@
-const mayasToken = 'saasda2d2adaadas2qddasdsa';
-const slavisToken = '1321312123dasdadasddrf223';
+
 
 export const server = {
-  login: credentials => {
+  loginAction: credentials => {
+    const {identifier, password} = res.body;
     return new Promise((resolve, reject) => {
-      if (credentials.email === 'maya' && credentials.password === '123') {
-        resolve({ token: mayasToken });
+      if (username === identifier && password === password) {
+        resolve({  });
       } else if (
-        credentials.email === 'slavi' &&
-        credentials.password === 'slavipass'
+       //
       ) {
-        resolve({ token: slavisToken });
+        resolve({ });
       } else {
-        reject({ error: 'Invalid password' });
+        reject({ });
       }
     });
   }

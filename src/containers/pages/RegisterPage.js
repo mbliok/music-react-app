@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { userSignupRequest } from '../../actions/signupActions';
-import SignupForm from '../../components/forms/SignupForm';
+import RegisterForm from '../../components/forms/RegisterForm';
 
 type Props = {
   userSignupRequest: () => void
 };
 
-class SignupPage extends React.Component<Props, State> {
+class RegisterPage extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {};
@@ -18,7 +18,7 @@ class SignupPage extends React.Component<Props, State> {
     return (
       <div>
         <h1>SignupPage page</h1>
-        <SignupForm userSignupRequest={userSignupRequest} />
+        <RegisterForm userSignupRequest={userSignupRequest} />
       </div>
     );
   }
@@ -29,4 +29,4 @@ export default connect(
   // },
   null,
   { userSignupRequest }
-)(SignupPage);
+)(RegisterPage);

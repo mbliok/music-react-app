@@ -8,7 +8,7 @@ import 'semantic-ui-css/semantic.min.css';
 import './index.scss';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import rootReducer from './rootReducer'; // create file reducer
+import reducer from './store/reducer'; // create file reducer
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 // 1. create store as a fuck with 2 arguments
@@ -19,10 +19,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 // 2. We want to use the provider is a hoc
 // and provider takes store props whitch is my const store
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(thunk))
-);
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 const app = (
   <BrowserRouter>
     <Provider store={store}>

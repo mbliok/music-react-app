@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { loginAction } from '../../actions/loginAction';
 import LoginForm from '../../components/forms/LoginForm';
+// import server from '../../server/server-simulator/server';
 
 type Props = {
   loginAction: () => void
@@ -10,7 +11,9 @@ type Props = {
 class LoginPage extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isLogged: false
+    };
   }
 
   render() {
@@ -18,13 +21,25 @@ class LoginPage extends React.Component<Props, State> {
     return (
       <div>
         <h1>Login page</h1>
-
+        <div>{this.state.isLoggedTxt}</div>
         <LoginForm loginAction={loginAction} />
       </div>
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    isLoggedTxt: state.isLogged
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loginAction: () => dispatch({ type: 'ISLOGGED' })
+  };
+};
 export default connect(
-  null,
-  { loginAction }
+  mapStateToProps,
+  mapDispatchToProps
 )(LoginPage);
+//loginAction
