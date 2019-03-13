@@ -19,10 +19,12 @@ class LoginPage extends React.Component<Props, State> {
   render() {
     const { loginAction } = this.props;
     return (
-      <div>
-        <h1>Login page</h1>
-        <div>{this.state.isLoggedTxt}</div>
-        <LoginForm loginAction={loginAction} />
+      <div className="right-side">
+        <div className="box-center">
+          <h1>Login</h1>
+          <div>{this.state.isLoggedTxt}</div>
+          <LoginForm loginAction={loginAction} />
+        </div>
       </div>
     );
   }

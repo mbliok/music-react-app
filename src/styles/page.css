@@ -1,63 +1,150 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif; }
+  font-family: sans-serif;
+  background-image: url("../assets/img/metallica-wallpaper.jpg");
+  position: relative; }
 
 html,
 body {
-  height: 100%; }
+  height: 100%;
+  color: #b9b9b9; }
+
+.wallpaper {
+  background-color: rgba(27, 19, 43, 0.87);
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%; }
+
+.logo {
+  width: 170px;
+  display: inline-block; }
+  .logo span {
+    font-size: 18px;
+    font-family: serif;
+    display: block;
+    width: 160px;
+    text-align: center;
+    line-height: 26px; }
+    .logo span.bigger {
+      font-size: 38px; }
+
+.navigation {
+  display: inline-block; }
+  .navigation ul li {
+    float: left;
+    list-style-type: none;
+    text-transform: uppercase;
+    margin: 0 22px; }
+    .navigation ul li a {
+      color: #bd87bd; }
+
+a {
+  color: #bd87bd !important; }
 
 label {
   text-align: left !important; }
 
-.btn, .btn.btn-green {
-  font-size: 1rem;
-  font-family: 'ProximaNova-r';
-  cursor: pointer;
-  font-weight: normal;
-  background: none;
-  position: relative;
+.ui.form .field > label {
+  color: violet;
+  font-weight: 100; }
+
+.right-side {
+  background-color: rgba(0, 0, 0, 0.53);
+  padding: 42px 40px;
+  height: calc(100vh);
+  margin-top: -60px;
+  border-left: 1px solid #362f44;
+  min-width: 388px; }
+
+.ui.list .list > .item,
+.ui.list > .item,
+ol.ui.list li,
+ul.ui.list li {
+  padding: 0; }
+
+.list-music {
+  display: flex;
+  align-items: center;
+  background-color: rgba(11, 8, 18, 0.48);
+  border-bottom: 1px solid #362f44;
+  padding: 14px 40px;
+  position: relative; }
+  .list-music .img-container {
+    height: 90px;
+    width: 146px;
+    overflow: hidden;
+    margin-right: 20px; }
+  .list-music img {
+    display: inline-block;
+    max-width: 100%; }
+  .list-music .list-music-info {
+    display: flex;
+    align-items: center; }
+  .list-music .buttons {
+    position: absolute;
+    right: 40px; }
+  .list-music:hover {
+    background-color: rgba(11, 8, 18, 0.35);
+    transition: all 300ms ease-in; }
+
+.flex-fluid {
+  display: flex; }
+  .flex-fluid .left-container {
+    flex-grow: 2; }
+    .flex-fluid .left-container .list-container {
+      clear: both;
+      padding-top: 20px;
+      overflow: auto;
+      height: calc(100vh - 138px); }
+    .flex-fluid .left-container button {
+      float: right;
+      margin-right: 40px; }
+  .flex-fluid .right-container {
+    flex-grow: 1; }
+
+.box-center {
+  width: 450px;
+  margin: 120px auto 0; }
+
+.search-field {
+  width: calc(40vw);
+  margin-left: 20px;
+  padding: 10px 20px;
   border: none;
+  background-color: transparent;
+  font-size: 18px;
   outline: 0 none;
-  display: inline;
-  padding: 0 15px;
-  min-height: 38px;
-  line-height: 38px;
-  border-radius: 4px;
-  min-width: 105px;
-  text-align: center;
-  transition: 0.3s ease-out; }
-  .btn:hover, .btn:focus {
-    opacity: 0.8; }
-
-button:disabled {
-  background: rgba(255, 255, 255, 0) !important;
-  color: #dedede !important; }
-
-.btn.btn-green {
-  color: #fff;
-  background: violet; }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
   color: white; }
+  .search-field:focus {
+    color: white; }
 
-form div {
-  margin-bottom: 8px; }
+.empty-result {
+  color: white;
+  text-align: center; }
 
-label {
-  width: 220px;
-  padding: 0 12px;
-  text-align: right;
-  display: inline-block; }
+.sound-player {
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+  .sound-player .flex {
+    background-color: #150e21 !important;
+    height: 90px !important; }
+  .sound-player .toggle-play-button {
+    background-color: purple !important; }
+  .sound-player .pause-icon {
+    box-shadow: purple 7px 0px 0px 0px inset !important; }
+  .sound-player .indicator {
+    background-color: purple !important; }
 
-.form-input {
-  height: 38px;
-  line-height: 38px;
-  border: 1px solid #999;
-  padding: 0 12px; }
+.single-view {
+  padding: 60px 40px;
+  position: relative;
+  display: inline-block;
+  width: 100%; }
 
-.post-body.hidden {
-  display: none; }
+.single-info,
+.pdf-preview {
+  float: left;
+  width: 50%; }

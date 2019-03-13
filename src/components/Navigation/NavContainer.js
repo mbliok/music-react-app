@@ -3,7 +3,10 @@ import React from 'react';
 const navContainer = props => (
   <div>
     <div className="nav-bar">
-      Logo
+      <div className="logo">
+        <span>Music sheets</span>
+        <span className="bigger">Rock</span>
+      </div>
       {props.children}
     </div>
   </div>

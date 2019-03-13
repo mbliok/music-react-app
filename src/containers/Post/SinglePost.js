@@ -1,5 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import AudioPlayer from 'react-h5-audio-player';
+import { Divider } from 'semantic-ui-react';
+import soundUrl from '../../doc/Fear_of_the_Dark.mp3';
+import pdfUrl from '../../doc/Fear_Of_The_Dark.pdf';
 
 type Props = {};
 
@@ -7,7 +11,9 @@ class SinglePost extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      post: null
+      post: null,
+      soundUrl,
+      pdfUrl
     };
   }
   componentDidMount() {
@@ -23,8 +29,31 @@ class SinglePost extends React.Component<Props, State> {
     // const { post_title, post_text } = this.state;
     const post = this.state.post ? (
       <div>
-        <h2>{this.state.post.post_title}</h2>
-        <p>{this.state.post.post_text}</p>
+        <div className="single-view">
+          <div className="pdf-preview">
+            <object
+              width="800"
+              height="700"
+              data={this.state.pdfUrl}
+              type="application/pdf"
+            />
+          </div>
+          <div className="single-info">
+            <h2>{this.state.post.post_title}</h2>
+            <Divider />
+
+            <p>{this.state.post.post_text}</p>
+            <small>{this.state.post.author}</small>
+          </div>
+        </div>
+
+        <div className="sound-player">
+          <AudioPlayer
+            autoPlay={false}
+            src={this.state.soundUrl}
+            onPlay={e => console.log('onPlay')}
+          />
+        </div>
       </div>
     ) : (
       <div />

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Form, Button } from 'semantic-ui-react';
 import Validator from 'validator';
 import Errors from './Errors';
@@ -42,7 +43,6 @@ class LoginForm extends React.Component<Props, State> {
     const { identifier, password } = this.state;
     return (
       <div>
-        <h2>Login Form with redux</h2>
         <Form onSubmit={this.onSubmit}>
           {/* a semantic UI attr,!! conver to boolean : error={!!errors.email}  */}
           <Form.Input
@@ -61,10 +61,14 @@ class LoginForm extends React.Component<Props, State> {
             onChange={this.onChange}
             value={password}
           />
-          <Button primary>Login</Button>
-          {/* <Button primary disabled={isLoading}>
+          <Button basic color="purple">
             Login
-          </Button> */}
+          </Button>
+          <Link to="/signup">
+            <Button basic inverted>
+              Sign up
+            </Button>
+          </Link>
         </Form>
       </div>
     );

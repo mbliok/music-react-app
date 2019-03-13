@@ -68,7 +68,9 @@ class RegisterForm extends React.Component<Props, State> {
             onChange={this.onChange}
             value={this.state.password || ''}
           />
-          <Button primary>Sign up</Button>
+          <Button basic color="purple">
+            Sign up
+          </Button>
         </Form>
       </div>
     );

@@ -16,9 +16,11 @@ class RegisterPage extends React.Component<Props, State> {
   render() {
     const { userSignupRequest } = this.props;
     return (
-      <div>
-        <h1>SignupPage page</h1>
-        <RegisterForm userSignupRequest={userSignupRequest} />
+      <div className="right-side">
+        <div className="box-center">
+          <h1>Sign up </h1>
+          <RegisterForm userSignupRequest={userSignupRequest} />
+        </div>
       </div>
     );
   }
