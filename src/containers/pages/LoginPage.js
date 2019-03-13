@@ -13,6 +13,7 @@ class LoginPage extends React.Component<Props, State> {
     super(props);
     this.state = {
       isLogged: false
+      //  isLoggedTxt:
     };
   }
 

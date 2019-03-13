@@ -26,7 +26,8 @@ class AddPost extends React.Component<Props, State> {
         post_text: '',
         author: '',
         image: '',
-        soundUrl: ''
+        soundUrl: '',
+        pdfUrl: ''
       }
     };
   }
@@ -48,7 +49,8 @@ class AddPost extends React.Component<Props, State> {
           category: '',
           image: '',
           author: '',
-          soundUrl: ''
+          soundUrl: '',
+          pdfUrl: ''
         }
       });
     });
@@ -58,7 +60,7 @@ class AddPost extends React.Component<Props, State> {
     return (
       <div className="right-side">
         <Container fluid>
-          <b>Add post</b>
+          <b>Save, share and publish your music</b>
           <Icon
             link
             name="close"
@@ -71,8 +73,38 @@ class AddPost extends React.Component<Props, State> {
 
           <Form>
             <Form.Input
-              label="Title"
-              placeholder="Post title"
+              label="Upload PDF file"
+              placeholder="PDF sheets"
+              type="file"
+              name="file"
+              onChange={e => {
+                let { newPost } = this.state;
+                let reader = new FileReader();
+                reader.readAsDataURL(e.target.files[0]);
+                reader.onload = e => {
+                  newPost.pdfUrl = e.target.result;
+                  this.setState({ newPost });
+                };
+              }}
+            />
+            <Form.Input
+              label="Upload sound format MIDI, MP3..."
+              placeholder="Sound file"
+              type="file"
+              name="file"
+              onChange={e => {
+                let { newPost } = this.state;
+                let reader = new FileReader();
+                reader.readAsDataURL(e.target.files[0]);
+                reader.onload = e => {
+                  newPost.soundUrl = e.target.result;
+                  this.setState({ newPost });
+                };
+              }}
+            />
+            <Form.Input
+              label="Title can be used for searching"
+              placeholder="Example: Metallica - Nothing Else Matters"
               type="text"
               name="post_title"
               onChange={e => {
@@ -85,7 +117,7 @@ class AddPost extends React.Component<Props, State> {
             <Form.TextArea
               label="Tell us more"
               name="post_text"
-              placeholder=""
+              placeholder="Description"
               rows={4}
               onChange={e => {
                 let { newPost } = this.state;
@@ -96,7 +128,7 @@ class AddPost extends React.Component<Props, State> {
             />
             <Form.Input
               label="Author"
-              placeholder="Your name"
+              placeholder="Author name"
               type="text"
               name="author"
               onChange={e => {
@@ -120,38 +152,22 @@ class AddPost extends React.Component<Props, State> {
             />
             <Form.Input
               label="Upload image"
-              placeholder="Upload image"
+              placeholder="Band image/logo...extr"
               type="file"
               name="file"
               onChange={e => {
                 let { newPost } = this.state;
                 let reader = new FileReader();
-                newPost.image = e.target.files;
                 reader.readAsDataURL(e.target.files[0]);
                 reader.onload = e => {
                   console.warn('img data', e.target.result);
+                  newPost.image = e.target.result;
                   console.warn(newPost);
                   this.setState({ newPost });
                 };
               }}
             />
-            <Form.Input
-              label="Upload sound"
-              placeholder="Upload sound"
-              type="file"
-              name="file"
-              onChange={e => {
-                let { newPost } = this.state;
-                let reader = new FileReader();
-                newPost.soundUrl = e.target.files;
-                reader.readAsDataURL(e.target.files[0]);
-                reader.onload = e => {
-                  console.warn('sound data', e.target.result);
-                  console.warn(newPost);
-                  this.setState({ newPost });
-                };
-              }}
-            />
+
             <Button content="Add" basic color="purple" onClick={this.addPost} />
           </Form>
         </Container>

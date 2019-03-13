@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -148,7 +149,8 @@ class HomePage extends React.Component<Props, State> {
                     this,
                     post.id,
                     post.post_title,
-                    post.post_text
+                    post.post_text,
+                    post.image
                   )}
                 >
                   <Icon name="pencil alternate" />
@@ -172,7 +174,7 @@ class HomePage extends React.Component<Props, State> {
       })
     ) : (
       <div className="empty-result">
-        Nothing fount for " <h3>{this.state.search}</h3> "
+        Nothing found for " <h3>{this.state.search}</h3> "
       </div>
     );
     return (
@@ -188,10 +190,17 @@ class HomePage extends React.Component<Props, State> {
             onChange={this.updateSearch}
             value={this.state.search}
           />
-
-          <Button basic color="purple" onClick={this.openBox}>
-            Add new post
+          <Button
+            icon
+            basic
+            color="purple"
+            labelPosition="left"
+            onClick={this.openBox}
+          >
+            <Icon name="upload" />
+            Upload
           </Button>
+
           <div className="list-container">
             <List>{postList}</List>
           </div>
@@ -203,7 +212,7 @@ class HomePage extends React.Component<Props, State> {
             ) : (
               <Link to="/login">
                 <Button basic color="purple">
-                  Add you sheet
+                  Add you sheet / login
                 </Button>
               </Link>
             )}
@@ -263,4 +272,4 @@ class HomePage extends React.Component<Props, State> {
     );
   }
 }
-export default HomePage;
+export default connect()(HomePage);
