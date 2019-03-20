@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { getAllUsers } from '../../actions/users.action';
 import {
   Container,
   Button,
@@ -8,6 +10,7 @@ import {
   Divider,
   Modal
 } from 'semantic-ui-react';
+import { bindActionCreators } from 'redux';
 
 type State = {};
 type Props = {};
@@ -24,20 +27,23 @@ class UsersList extends React.Component<Props, State> {
       }
     };
   }
+  componentDidMount() {
+    this.props.getAllUsers();
+  }
   componentWillMount() {
-    this.refreshUser();
+    //  this.refreshUser();
   }
 
   // GET all users
   componentDidMount() {
-    axios
-      .get('http://localhost:3004/users')
-      .then(res => {
-        this.setState({ users: res.data });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    // axios
+    //   .get('http://localhost:3004/users')
+    //   .then(res => {
+    //     this.setState({ users: res.data });
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
   }
   updateUser = e => {
     e.preventDefault();
@@ -83,37 +89,37 @@ class UsersList extends React.Component<Props, State> {
   close = () => this.setState({ open: false });
 
   render() {
+    console.log('User list', this.props);
+    let userList = this.props.users.map((user, id) => {
+      return (
+        <List.Item key={user.id}>
+          {user.id}
+          {user.first_name} {user.last_name}
+          <Button.Group size="mini">
+            <Button
+              onClick={this.editUser.bind(
+                this,
+                user.id,
+                user.first_name,
+                user.last_name
+              )}
+            >
+              Edit
+            </Button>
+            <Button.Or />
+            <Button onClick={this.deleteUser.bind(this, user.id)}>
+              Delete
+            </Button>
+          </Button.Group>
+        </List.Item>
+      );
+    });
     return (
       <Container fluid>
         <b>Get all users</b>
         <Divider />
 
-        <List>
-          {this.state.users.map(user => {
-            return (
-              <List.Item key={user.id}>
-                {user.id}
-                {user.first_name} {user.last_name}
-                <Button.Group size="mini">
-                  <Button
-                    onClick={this.editUser.bind(
-                      this,
-                      user.id,
-                      user.first_name,
-                      user.last_name
-                    )}
-                  >
-                    Edit
-                  </Button>
-                  <Button.Or />
-                  <Button onClick={this.deleteUser.bind(this, user.id)}>
-                    Delete
-                  </Button>
-                </Button.Group>
-              </List.Item>
-            );
-          })}
-        </List>
+        <List>{userList}</List>
         <b>Edit users</b>
         <Divider />
         <Form>
@@ -152,4 +158,18 @@ class UsersList extends React.Component<Props, State> {
     );
   }
 }
-export default UsersList;
+function mapStateToProps(state) {
+  console.log(state);
+  return {
+    users: state.users
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    getAllUsers: bindActionCreators(getAllUsers, dispatch)
+  };
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UsersList);
