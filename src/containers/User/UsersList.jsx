@@ -27,23 +27,14 @@ class UsersList extends React.Component<Props, State> {
       }
     };
   }
-  componentDidMount() {
-    this.props.getAllUsers();
-  }
+
   componentWillMount() {
     //  this.refreshUser();
   }
 
   // GET all users
   componentDidMount() {
-    // axios
-    //   .get('http://localhost:3004/users')
-    //   .then(res => {
-    //     this.setState({ users: res.data });
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
+    this.props.getAllUsers();
   }
   updateUser = e => {
     e.preventDefault();
@@ -72,14 +63,14 @@ class UsersList extends React.Component<Props, State> {
     });
   };
   refreshUser = () => {
-    axios
-      .get('http://localhost:3004/users')
-      .then(res => {
-        this.setState({ users: res.data });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    // axios
+    //   .get('http://localhost:3004/users')
+    //   .then(res => {
+    //     this.setState({ users: res.data });
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
   };
   deleteUser = id => {
     axios.delete('http://localhost:3004/users/' + id).then(res => {
@@ -89,8 +80,8 @@ class UsersList extends React.Component<Props, State> {
   close = () => this.setState({ open: false });
 
   render() {
-    console.log('User list', this.props);
-    let userList = this.props.users.map((user, id) => {
+    console.log('User list get from redux', this.props);
+    let userList = this.props.users.map(user => {
       return (
         <List.Item key={user.id}>
           {user.id}
@@ -120,46 +111,12 @@ class UsersList extends React.Component<Props, State> {
         <Divider />
 
         <List>{userList}</List>
-        <b>Edit users</b>
-        <Divider />
-        <Form>
-          <Form.Input
-            label=""
-            placeholder="Edit first name"
-            type="text"
-            name="first_name"
-            onChange={e => {
-              let { editUserData } = this.state;
-              editUserData.first_name = e.target.value;
-              this.setState({ editUserData });
-            }}
-            value={this.state.editUserData.first_name || ''}
-          />
-          <Form.Input
-            label=""
-            placeholder="Edit last name"
-            type="text"
-            name="last_name"
-            onChange={e => {
-              let { editUserData } = this.state;
-              editUserData.last_name = e.target.value;
-              this.setState({ editUserData });
-            }}
-            value={this.state.editUserData.last_name || ''}
-          />
-          <Button
-            content="Save and update"
-            primary
-            size="mini"
-            onClick={this.updateUser}
-          />
-        </Form>
       </Container>
     );
   }
 }
 function mapStateToProps(state) {
-  console.log(state);
+  console.log('state.users', state.users);
   return {
     users: state.users
   };
