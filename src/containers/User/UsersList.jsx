@@ -115,17 +115,17 @@ class UsersList extends React.Component<Props, State> {
     );
   }
 }
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   console.log('state.users', state.users);
   return {
     users: state.users
   };
-}
-function mapDispatchToProps(dispatch) {
+};
+const mapDispatchToProps = dispatch => {
   return {
     getAllUsers: bindActionCreators(getAllUsers, dispatch)
   };
-}
+};
 export default connect(
   mapStateToProps,
   mapDispatchToProps

@@ -5,8 +5,8 @@ const initialState = [];
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_USERS:
-      return [...state, ...action.payload];
-
+      return [...action.payload]; // ...state was removed
+    // gon't need to get the state
     default:
       return state;
   }

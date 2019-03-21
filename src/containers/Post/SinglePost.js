@@ -1,9 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import AudioPlayer from 'react-h5-audio-player';
 import { Divider } from 'semantic-ui-react';
-// import soundUrl from '../../doc/Fear_of_the_Dark.mp3';
-// import pdfUrl from '../../doc/Fear_Of_The_Dark.pdf';
 
 type Props = {};
 
@@ -12,8 +11,6 @@ class SinglePost extends React.Component<Props, State> {
     super(props);
     this.state = {
       post: null
-      // soundUrl,
-      // pdfUrl
     };
   }
   componentDidMount() {
@@ -26,7 +23,6 @@ class SinglePost extends React.Component<Props, State> {
     });
   }
   render() {
-    // const { post_title, post_text } = this.state;
     const post = this.state.post ? (
       <div>
         <div className="single-view">
@@ -61,4 +57,14 @@ class SinglePost extends React.Component<Props, State> {
     return <div>{post}</div>;
   }
 }
+// const mapStateToProps = (state, ownProps) => {
+//   let id = ownProps.match.params.post_id; // get from App.js path="/:post_id"
+//   return {
+//     post: state.post.find(post => {
+
+//       return post.id === id;
+//     })
+//   };
+// };
+// export default connect(mapStateToProps)(SinglePost);
 export default SinglePost;
