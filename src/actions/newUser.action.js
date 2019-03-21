@@ -8,6 +8,7 @@ export const addNewUser = newUserData => {
       .post('http://localhost:3004/users', newUserData)
       .then(res => res.data)
       .then(newUser => {
+        console.log('newUserData is ', newUserData);
         dispatch({
           type: ADD_USER,
           payload: newUser

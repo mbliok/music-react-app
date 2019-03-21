@@ -19,7 +19,7 @@ class UsersList extends React.Component<Props, State> {
     super(props);
     this.state = {
       open: false,
-      users: [],
+      // users: [],
       editUserData: {
         id: '',
         first_name: '',
