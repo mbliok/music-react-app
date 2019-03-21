@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import AudioPlayer from 'react-h5-audio-player';
 import { Divider } from 'semantic-ui-react';
-
+// import { getAllPosts } from '../../actions/posts.action';
 type Props = {};
 
 class SinglePost extends React.Component<Props, State> {
@@ -59,11 +59,9 @@ class SinglePost extends React.Component<Props, State> {
 }
 // const mapStateToProps = (state, ownProps) => {
 //   let id = ownProps.match.params.post_id; // get from App.js path="/:post_id"
+//   console.log('post is is', id, state);
 //   return {
-//     post: state.post.find(post => {
-
-//       return post.id === id;
-//     })
+//     post: state.posts.find(post => post.id === id)
 //   };
 // };
 // export default connect(mapStateToProps)(SinglePost);

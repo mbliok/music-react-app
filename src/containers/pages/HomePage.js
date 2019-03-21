@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -13,7 +14,7 @@ import {
   Modal,
   Icon
 } from 'semantic-ui-react';
-
+import { getAllPosts } from '../../actions/posts.action';
 import AddPost from '../Post/AddPost';
 
 import defImg from '../../assets/img/body-wallpaper.jpg';
@@ -24,7 +25,7 @@ class HomePage extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      posts: [],
+      // posts: [],
       isAuthenticated: true,
       isBoxOpen: false,
       isPostEditBox: false,
@@ -41,14 +42,7 @@ class HomePage extends React.Component<Props, State> {
     this.refreshPost();
   }
   componentDidMount() {
-    axios
-      .get('http://localhost:3004/posts')
-      .then(res => {
-        this.setState({ posts: res.data });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.props.getAllPosts();
   }
   refreshPost = () => {
     axios
@@ -106,7 +100,7 @@ class HomePage extends React.Component<Props, State> {
   };
 
   render() {
-    let filteredPosts = this.state.posts.filter(post => {
+    let filteredPosts = this.props.posts.filter(post => {
       return (
         post.post_title
           .toLowerCase()
@@ -272,4 +266,19 @@ class HomePage extends React.Component<Props, State> {
     );
   }
 }
-export default connect()(HomePage);
+// get what data we want and map it to the props
+const mapStateToProps = state => {
+  console.log('state.users', state.posts);
+  return {
+    posts: state.posts
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    getAllPosts: bindActionCreators(getAllPosts, dispatch)
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomePage);

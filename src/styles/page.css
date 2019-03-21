@@ -19,7 +19,7 @@ body {
 
 .logo {
   width: 170px;
-  display: inline-block; }
+  float: left; }
   .logo span {
     font-size: 18px;
     font-family: serif;
@@ -31,14 +31,18 @@ body {
       font-size: 38px; }
 
 .navigation {
-  display: inline-block; }
-  .navigation ul li {
-    float: left;
-    list-style-type: none;
-    text-transform: uppercase;
-    margin: 0 22px; }
-    .navigation ul li a {
-      color: #bd87bd; }
+  display: inline-block;
+  width: 100%; }
+  .navigation ul {
+    float: right;
+    margin: 28px 0 0 0; }
+    .navigation ul li {
+      float: left;
+      list-style-type: none;
+      text-transform: uppercase;
+      margin: 0 22px; }
+      .navigation ul li a {
+        color: #bd87bd; }
 
 a {
   color: #bd87bd !important; }

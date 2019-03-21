@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Layout from './components/Layout/Layout';
+import Navbar from './components/Layout/Navbar';
 import RegisterPage from './containers/pages/RegisterPage';
 // import Posts from './containers/pages/Posts';
 import SinglePost from './containers/Post/SinglePost';
@@ -24,6 +25,7 @@ class App extends React.Component {
       <div className="wallpaper">
         <Switch>
           <Layout>
+            <Navbar />
             <Route exact path="/" component={HomePage} />
             {/* <Route path="/posts" component={Posts} /> */}
             <Route path="/:post_id" component={SinglePost} />

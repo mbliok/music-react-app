@@ -18,9 +18,10 @@ body {
   height: 100%;
   width: 100%;
 }
+
 .logo {
   width: 170px;
-  display: inline-block;
+  float: left;
   span {
     font-size: 18px;
     font-family: serif;
@@ -35,7 +36,10 @@ body {
 }
 .navigation {
   display: inline-block;
+  width: 100%;
   ul {
+    float: right;
+    margin: 28px 0 0 0;
     li {
       float: left;
       list-style-type: none;
