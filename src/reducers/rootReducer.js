@@ -2,11 +2,13 @@
 import newUser from './newUser.reducer';
 import users from './users.reducer';
 import posts from './posts.reducer';
+import session from './session.reducer';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
   users,
   posts,
-  newUser
+  newUser,
+  session
 });
 export default rootReducer;
