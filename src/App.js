@@ -19,14 +19,26 @@ class App extends React.Component {
     super(props);
     this.state = {};
   }
-
+  // requireAuth = (nextState, replace) => {
+  //   if (!sessionStorage.jwt) {
+  //     replace({
+  //       pathname: '/login',
+  //       state: { nextPathname: nextState.location.pathname }
+  //     });
+  //   }
+  // };
   render() {
     return (
       <div className="wallpaper">
         <Switch>
           <Layout>
             <Navbar />
-            <Route exact path="/" component={HomePage} />
+            <Route
+              exact
+              path="/"
+              component={HomePage}
+              //  onEnter={this.requireAuth}
+            />
             {/* <Route path="/posts" component={Posts} /> */}
             <Route path="/:post_id" component={SinglePost} />
             <Route path="/signup" component={RegisterPage} />
